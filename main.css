@@ -18,7 +18,7 @@ body {
 
 * {
     box-sizing: border-box;
-    cursor: none;
+    cursor: none !important;
 }
 
 *:focus {
@@ -55,10 +55,10 @@ body {
 input {
     border-radius: 8px;
     border: 1px solid #dfdfdf;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     line-height: 1.5;
-    padding: 0.5rem;
+    padding: 0.5rem 0.8rem;
 }
 
 input:focus {
@@ -79,13 +79,28 @@ button {
 }
 
 button:hover {
-    /* background-color: #3e3e3e; */
     cursor: none;
     opacity: 0.85;
 }
 
 button:active {
     transform: scale(0.95);
+}
+
+button[data-loading] {
+    background-color: #dfdfdf;
+    color: #8f8f8f;
+    opacity: 1;
+}
+
+button:disabled {
+    background-color: #dfdfdf;
+    color: #8f8f8f;
+    opacity: 1;
+}
+
+button:disabled:active {
+    transform: none;
 }
 
 /* ---------- CURSOR STUFF ---------- */
@@ -98,9 +113,10 @@ button:active {
     border-style: dashed;
     border-color: rgb(233, 233, 233);
     position: fixed;
-    transform: translate(-50%, -50%);
+    margin-left: -32px;
+    margin-top: -32px;
     pointer-events: none;
-    transition: border-color 0.6s, border-width 0.3s;
+    transition: border-color 0.6s, border-width 0.3s, transform 0.3s;
 }
 
 .cursor .dot {
@@ -127,39 +143,81 @@ button:active {
     transition: all 0.2s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-.cursor.hover-input {
+.cursor.input {
     border-color: red;
 }
 
-.cursor.hover-input .dot {
+.cursor.input .dot {
     border-radius: 0;
     transform: scale(0.5, 6) translate(-4px, 0);
 }
 
-.cursor.hover-input .dotx {
+.cursor.input .dotx {
     opacity: 0;
 }
 
-.cursor.hover-button {
+.cursor.pointer {
     border-color: red;
 }
 
-.cursor.hover-button .dot {
+.cursor.pointer .dot {
     transform: scale(2) translate(-1px, -1px);
 }
 
-.cursor.hover-button .dotx {
+.cursor.pointer .dotx {
     opacity: 0;
 }
 
-.cursor.hover-text {
+.cursor.disabled {
+    transform: rotate(45deg);
+    border-color: #8f8f8f;
 }
 
-.cursor.hover-text .dot {
+.cursor.disabled .dot {
+    border-radius: 0;
+    transform: translate(-2px, -2px) scale(0.5, 4);
+    background-color: #8f8f8f;
+}
+
+.cursor.disabled .dotx {
+    border-radius: 0;
+    transform: translate(-2px, -2px) scale(4, 0.5);
+    background-color: #8f8f8f;
+}
+
+.cursor.selectable {
+}
+
+.cursor.selectable .dot {
     border-radius: 0;
     transform: scale(0.5, 6) translate(-4px, 0);
 }
 
-.cursor.hover-text .dotx {
+.cursor.selectable .dotx {
     opacity: 0;
+}
+
+.cursor.loading {
+    border-color: #8f8f8f;
+    animation: spin infinite 8s linear;
+}
+
+.cursor.loading .dot {
+    background-color: #8f8f8f;
+    opacity: 0;
+}
+
+.cursor.loading .dotx {
+    border-radius: 0;
+    background-color: #8f8f8f;
+    transform: translate(-2px, -2px) scale(4, 0.5);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

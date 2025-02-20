@@ -25,8 +25,10 @@
         </div>
         <div class="sandbox">
             <div class="form">
-                <input type="text" />
+                <input type="text" placeholder="Write something" />
                 <button>Click me</button>
+                <button disabled>Cannot click me</button>
+                <button data-loading="true">Processing...</button>
             </div>
             <div class="text">
                 <h2>Some title</h2>
@@ -47,36 +49,42 @@
                 cursor.style.top = e.clientY + 'px';
             });
 
-            var inputs = document.querySelectorAll('input');
-            var buttons = document.querySelectorAll('button');
-            var text = document.querySelectorAll('p, h1, h2, h3, h4, h5');
+            var hoverClassnames = {
+                DISABLED: 'disabled',
+                INPUT: 'input',
+                POINTER: 'pointer',
+                SELECTABLE: 'selectable',
+                LOADING: 'loading',
+            };
 
-            inputs.forEach((item) => {
+            function attachClassnameListener(item, classname) {
                 item.addEventListener('mouseover', () => {
-                    cursor.classList.add('hover-input');
+                    cursor.classList.add(classname);
                 });
                 item.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('hover-input');
+                    cursor.classList.remove(classname);
                 });
+            }
+
+            document.querySelectorAll('input').forEach((item) => {
+                attachClassnameListener(item, hoverClassnames.INPUT);
             });
 
-            buttons.forEach((item) => {
-                item.addEventListener('mouseover', () => {
-                    cursor.classList.add('hover-button');
-                });
-                item.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('hover-button');
-                });
+            document.querySelectorAll('button').forEach((item) => {
+                if (item.dataset.loading) {
+                    attachClassnameListener(item, hoverClassnames.LOADING);
+                } else if (item.disabled) {
+                    attachClassnameListener(item, hoverClassnames.DISABLED);
+                } else {
+                    attachClassnameListener(item, hoverClassnames.POINTER);
+                }
             });
 
-            text.forEach((item) => {
-                item.addEventListener('mouseover', () => {
-                    cursor.classList.add('hover-text');
+            document
+                .querySelectorAll('p, h1, h2, h3, h4, h5')
+                .forEach((item) => {
+                    attachClassnameListener(item, hoverClassnames.SELECTABLE);
                 });
-                item.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('hover-text');
-                });
-            });
         </script>
 
         <div id="root"></div>
