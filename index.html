@@ -1,13 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MXD - Microinteractions</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="/main.css" />
+    </head>
+    <body>
+        <div class="title">
+            <h1>MXD / cursor</h1>
+            <p>
+                Hover your cursor above the following elements and try to
+                interact with them.
+            </p>
+        </div>
+        <div class="sandbox">
+            <div class="form">
+                <input type="text" />
+                <button>Click me</button>
+            </div>
+            <div class="text">
+                <h2>Some title</h2>
+                <p>Lorem ipsum text aka some paragraph.</p>
+                <p>And another one as well.</p>
+            </div>
+        </div>
+        <div class="cursor">
+            <div class="dot"></div>
+            <div class="dotx"></div>
+        </div>
+
+        <script>
+            var cursor = document.querySelector('.cursor');
+
+            document.addEventListener('mousemove', function (e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            var inputs = document.querySelectorAll('input');
+            var buttons = document.querySelectorAll('button');
+            var text = document.querySelectorAll('p, h1, h2, h3, h4, h5');
+
+            inputs.forEach((item) => {
+                item.addEventListener('mouseover', () => {
+                    cursor.classList.add('hover-input');
+                });
+                item.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover-input');
+                });
+            });
+
+            buttons.forEach((item) => {
+                item.addEventListener('mouseover', () => {
+                    cursor.classList.add('hover-button');
+                });
+                item.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover-button');
+                });
+            });
+
+            text.forEach((item) => {
+                item.addEventListener('mouseover', () => {
+                    cursor.classList.add('hover-text');
+                });
+                item.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover-text');
+                });
+            });
+        </script>
+
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
 </html>

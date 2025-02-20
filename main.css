@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+
+    font-family: 'Inter', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    /* color-scheme: light dark; */
+    color: #171717;
+    background-color: rgb(251, 251, 251);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+    cursor: none;
+}
+
+*:focus {
+    outline-width: 2px;
+    outline-color: rgb(137, 137, 137);
+    outline-offset: 4px;
+}
+
+::selection {
+    background-color: rgb(255, 185, 185);
+}
+
+.title {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.sandbox {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 48px;
+    border: 1px solid #e5e5e5;
+}
+
+.form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.text {
+    margin-top: 4rem;
+}
+
+input {
+    border-radius: 8px;
+    border: 1px solid #dfdfdf;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 0.5rem;
+}
+
+input:focus {
+    /* border-color: transparent; */
+}
+
+button {
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 0.5rem 1rem;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    /* background-color: #3e3e3e; */
+    cursor: none;
+    opacity: 0.85;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ---------- CURSOR STUFF ---------- */
+
+.cursor {
+    width: 64px;
+    height: 64px;
+    border-radius: 2rem;
+    border-width: 1px;
+    border-style: dashed;
+    border-color: rgb(233, 233, 233);
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: border-color 0.6s, border-width 0.3s;
+}
+
+.cursor .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-2px, -2px);
+    transition: all 0.2s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.cursor .dotx {
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.cursor.hover-input {
+    border-color: red;
+}
+
+.cursor.hover-input .dot {
+    border-radius: 0;
+    transform: scale(0.5, 6) translate(-4px, 0);
+}
+
+.cursor.hover-input .dotx {
+    opacity: 0;
+}
+
+.cursor.hover-button {
+    border-color: red;
+}
+
+.cursor.hover-button .dot {
+    transform: scale(2) translate(-1px, -1px);
+}
+
+.cursor.hover-button .dotx {
+    opacity: 0;
+}
+
+.cursor.hover-text {
+}
+
+.cursor.hover-text .dot {
+    border-radius: 0;
+    transform: scale(0.5, 6) translate(-4px, 0);
+}
+
+.cursor.hover-text .dotx {
+    opacity: 0;
+}
