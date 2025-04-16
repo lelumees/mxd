@@ -35,6 +35,9 @@
                 <p>Lorem ipsum text aka some paragraph.</p>
                 <p>And another one as well.</p>
             </div>
+            <p class="footnote">
+                Made with 🖤 by <a href="https://lelumees.ee">@lelumees</a>
+            </p>
         </div>
         <div class="cursor">
             <div class="dot"></div>
@@ -70,7 +73,7 @@
                 attachClassnameListener(item, hoverClassnames.INPUT);
             });
 
-            document.querySelectorAll('button').forEach((item) => {
+            document.querySelectorAll('button, a').forEach((item) => {
                 if (item.dataset.loading) {
                     attachClassnameListener(item, hoverClassnames.LOADING);
                 } else if (item.disabled) {

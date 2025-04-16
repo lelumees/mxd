@@ -43,6 +43,12 @@ body {
     border: 1px solid #e5e5e5;
 }
 
+.footnote {
+    font-size: 0.6rem;
+    margin-top: 100px;
+    text-align: center;
+}
+
 .form {
     display: flex;
     gap: 0.5rem;
@@ -103,6 +109,11 @@ button:disabled:active {
     transform: none;
 }
 
+a {
+    color: #000000;
+    font-weight: 600;
+}
+
 /* ---------- CURSOR STUFF ---------- */
 
 .cursor {
@@ -143,6 +154,18 @@ button:disabled:active {
     transition: all 0.2s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
+.cursor.selectable {
+}
+
+.cursor.selectable .dot {
+    border-radius: 0;
+    transform: scale(0.5, 6) translate(-4px, 0);
+}
+
+.cursor.selectable .dotx {
+    opacity: 0;
+}
+
 .cursor.input {
     border-color: red;
 }
@@ -162,10 +185,12 @@ button:disabled:active {
 
 .cursor.pointer .dot {
     transform: scale(2) translate(-1px, -1px);
+    border-radius: 4px;
 }
 
 .cursor.pointer .dotx {
     opacity: 0;
+    border-radius: 4px;
 }
 
 .cursor.disabled {
@@ -183,18 +208,6 @@ button:disabled:active {
     border-radius: 0;
     transform: translate(-2px, -2px) scale(4, 0.5);
     background-color: #8f8f8f;
-}
-
-.cursor.selectable {
-}
-
-.cursor.selectable .dot {
-    border-radius: 0;
-    transform: scale(0.5, 6) translate(-4px, 0);
-}
-
-.cursor.selectable .dotx {
-    opacity: 0;
 }
 
 .cursor.loading {
