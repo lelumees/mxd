@@ -4,93 +4,22 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/mxd.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>MXD - Microinteractions</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-            rel="stylesheet"
+        <meta
+            name="description"
+            content="Web site created using create-react-app"
         />
-
-        <link rel="stylesheet" href="/main.css" />
+        <link rel="apple-touch-icon" href="/logo192.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <title>MUI validation</title>
+        <link
+            rel="stylesheet"
+            href="https://static.bolt.eu/fonts/inter/inter.css"
+        />
+        <script defer="defer" src="/static/js/main.6513d81f.js"></script>
+        <link href="/static/css/main.6b5e7cf8.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="title">
-            <h1>MXD / cursor !!!</h1>
-            <p>
-                Hover your cursor above the following elements and try to
-                interact with them.
-            </p>
-        </div>
-        <div class="sandbox">
-            <div class="form">
-                <input type="text" placeholder="Write something" />
-                <button>Click me</button>
-                <button disabled>Cannot click me</button>
-                <button data-loading="true">Processing...</button>
-            </div>
-            <div class="text">
-                <h2>Some title</h2>
-                <p>Lorem ipsum text aka some paragraph.</p>
-                <p>And another one as well.</p>
-            </div>
-            <p class="footnote">
-                Made with 🖤 by <a href="https://lelumees.ee">@lelumees</a>
-            </p>
-        </div>
-        <div class="cursor">
-            <div class="dot"></div>
-            <div class="dotx"></div>
-        </div>
-
-        <script>
-            var cursor = document.querySelector('.cursor');
-
-            document.addEventListener('mousemove', function (e) {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            });
-
-            var hoverClassnames = {
-                DISABLED: 'disabled',
-                INPUT: 'input',
-                POINTER: 'pointer',
-                SELECTABLE: 'selectable',
-                LOADING: 'loading',
-            };
-
-            function attachClassnameListener(item, classname) {
-                item.addEventListener('mouseover', () => {
-                    cursor.classList.add(classname);
-                });
-                item.addEventListener('mouseleave', () => {
-                    cursor.classList.remove(classname);
-                });
-            }
-
-            document.querySelectorAll('input').forEach((item) => {
-                attachClassnameListener(item, hoverClassnames.INPUT);
-            });
-
-            document.querySelectorAll('button, a').forEach((item) => {
-                if (item.dataset.loading) {
-                    attachClassnameListener(item, hoverClassnames.LOADING);
-                } else if (item.disabled) {
-                    attachClassnameListener(item, hoverClassnames.DISABLED);
-                } else {
-                    attachClassnameListener(item, hoverClassnames.POINTER);
-                }
-            });
-
-            document
-                .querySelectorAll('p, h1, h2, h3, h4, h5')
-                .forEach((item) => {
-                    attachClassnameListener(item, hoverClassnames.SELECTABLE);
-                });
-        </script>
-
         <div id="root"></div>
-        <script type="module" src="/src/main.tsx"></script>
     </body>
 </html>
